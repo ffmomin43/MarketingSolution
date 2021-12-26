@@ -1,0 +1,59 @@
+﻿@model MarketingSolution.Models.EmailTemplate
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    @ViewBag.Title.
+</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("SaveTemplate", "EmailTemplate", new {
+                ReturnUrl = ViewBag.ReturnUrl
+            }, FormMethod.Post, new
+            {
+                @class = "form-horizontal",
+                role = "form"
+            }))
+            {
+            
+                @Html.AntiForgeryToken()
+                <h5> <i class = "fa fa-link" aria-hidden = "true"> </i></h5> 
+            <hr/> 
+            <div>
+                @Html.HiddenFor(x=>x.Id)
+                
+            </div>
+            <div class = "form-group"> 
+            <label class = "col-md-4 control-label"> Message </label> 
+            <div class = "col-md-8"> 
+                <div class = "input-group">@Html.TextAreaFor(m => m.TemplateHtml, new {rows = "20",style = "resize:none;width:400px;",
+placeholder = Html.DisplayNameFor(m => m.TemplateHtml),
+@class = "form-control input-lg textarea-editor"
+}) </div> </div> 
+            </div>
+            <div class="row">
+                <div><input type="submit"</div>
+            </div>
+                
+                } </section> </div> </div>
+                
+
+@section scripts { 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet"/>
+
+    <script>
+        $(document).ready(function () {            
+            // Initialize Editor  
+            $('.textarea-editor').summernote({
+                height: 300, // set editor height  
+                minHeight: null, // set minimum height of editor  
+                maxHeight: null, // set maximum height of editor  
+                focus: true // set focus to editable area after initializing summernote  
+            });
+        });
+    </script>
+}

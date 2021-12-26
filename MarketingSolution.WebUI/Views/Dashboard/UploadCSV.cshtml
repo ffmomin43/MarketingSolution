@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MarketingSolution.WebUI.Models.CSVModel>
+
+@{
+    ViewBag.Title = "CSV Content";
+}
+
+<h2>Content In uploaded file</h2>
+<div style="text-align:right">
+    <a href="@Url.Action("ConfirmUpload","Dashboard")" class="btn btn-warning" >Confirm Upload</a>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SrNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SrNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        
+    </tr>
+}
+
+</table>

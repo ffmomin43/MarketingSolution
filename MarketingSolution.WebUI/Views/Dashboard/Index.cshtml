@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .top-margin-label{
+        margin-top:8px;
+    }
+
+    .container-margin{
+        padding:25px;
+    }
+</style>
+
+<div class="container container-margin">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Upload Excel</div>
+                <div class="panel-body">
+                    <div class="row">
+                        @using (Html.BeginForm("UploadCSV", "Dashboard", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="col-md-3"><label class="form-inline top-margin-label">Select CSV file</label></div>
+                            <div class="col-md-6"><input type="file" name="fileBase" class="form-control" /></div>
+                            <div class="col-md-3"><input type="submit" value="Upload" class="btn btn-success" /></div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            
+            <div class="panel panel-primary">
+                <div class="panel-heading">Download Sample</div>
+                <div class="panel-body">
+                    To download sample click <a href="@Url.Action("DownloadSample","Dashboard")">here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
